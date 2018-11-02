@@ -103,7 +103,7 @@ cf create-buildpack [NEWRELIC_DOTNET_CORE_EXTENSION_BUILDPACK] [BUILDPACK_ZIP_FI
 cf push my_app -b NEWRELIC_DOTNET_CORE_EXTENSION_BUILDPACK   -b DOTNET_CORE_BUILDPACK
 ```
 
-## Example: How to Push a Sample Dotnet Core Application to PCF
+## Example: Push a Sample Dotnet Core Application to PCF
 The following example uses **"dotnet"** CLI to create a sample Dotnet Core application, configures the app manifest to bind the application with New Relic Dotnet Core agent, and pushes the app to PCF. Note that the example uses environment variable to specify the license key for the New Relic account. You could check [How New Relic Dotnet Core Extension Buildpack Works](#how-new-relic-dotnet-core-extension-buildpack-works) for alternative ways to bind to the agent.
 
 1- Create a sample dotnet MVC application (or use you existing dotnet Core application)
