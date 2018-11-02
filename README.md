@@ -91,7 +91,7 @@ To simplify the process in the future, install [direnv][d] which will automatica
 
 3- Build the buildpack
 ```bash
-buildpack-packager build [ --cached ] [ -stack cflinuxfs2 | cflinuxfs3 ]
+buildpack-packager build [ --cached ] [ -any-stack ] [ -stack cflinuxfs2 | cflinuxfs3 ]
 ```
 
 ## Use The Extension Buildpack in Cloud Foundry
