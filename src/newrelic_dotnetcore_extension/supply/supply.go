@@ -426,7 +426,7 @@ func checkSha256(filePath, expectedSha256 string) error {
 
 func getNewRelicConfigFile(s *Supplier, newrelicDir string, buildpackDir string) error {
 	newrelicConfigBundledWithApp := filepath.Join(s.Stager.BuildDir(), "newrelic.config")
-	newrelicConfigDest := filepath.Join(newrelicDir, "newrelic.config")
+	newrelicConfigDest := filepath.Join(s.Stager.DepDir(), newrelicDir, "newrelic.config")
 	newrelicConfigBundledWithAppExists, err := libbuildpack.FileExists(newrelicConfigBundledWithApp)
 	if err != nil {
 		s.Log.Error("Unable to test existence of newrelic.config in app folder", err)
@@ -434,7 +434,8 @@ func getNewRelicConfigFile(s *Supplier, newrelicDir string, buildpackDir string)
 	}
 	if newrelicConfigBundledWithAppExists {
 		// newrelic.config exists in app folder
-		s.Log.Info("Overwriting newrelic.config provided with app")
+		s.Log.Info("Using newrelic.config provided in the app folder")
+		s.Log.Debug("Copying %s to %s", newrelicConfigBundledWithApp, newrelicConfigDest)
 		if err := libbuildpack.CopyFile(newrelicConfigBundledWithApp, newrelicConfigDest); err != nil {
 			s.Log.Error("Error Copying newrelic.config provided within the app folder", err)
 			return err
